@@ -5,7 +5,6 @@ C:\Users\nkadmin\source\repos\SIMFireRiskPredictor\SIMFireRiskPredictor\bin\Debu
 C:\Users\nkadmin\source\repos\SIMFireRiskPredictor\SIMFireRiskPredictor\bin\Debug\netcoreapp2.1\SIMFireRiskPredictor.pdb
 C:\Users\nkadmin\source\repos\SIMFireRiskPredictor\SIMFireRiskPredictor\bin\Debug\netcoreapp2.1\SIMFireRiskPredictor.Views.dll
 C:\Users\nkadmin\source\repos\SIMFireRiskPredictor\SIMFireRiskPredictor\bin\Debug\netcoreapp2.1\SIMFireRiskPredictor.Views.pdb
-C:\Users\nkadmin\source\repos\SIMFireRiskPredictor\SIMFireRiskPredictor\obj\Debug\netcoreapp2.1\SIMFireRiskPredictor.csprojAssemblyReference.cache
 C:\Users\nkadmin\source\repos\SIMFireRiskPredictor\SIMFireRiskPredictor\obj\Debug\netcoreapp2.1\SIMFireRiskPredictor.csproj.CoreCompileInputs.cache
 C:\Users\nkadmin\source\repos\SIMFireRiskPredictor\SIMFireRiskPredictor\obj\Debug\netcoreapp2.1\SIMFireRiskPredictor.RazorAssemblyInfo.cache
 C:\Users\nkadmin\source\repos\SIMFireRiskPredictor\SIMFireRiskPredictor\obj\Debug\netcoreapp2.1\SIMFireRiskPredictor.RazorAssemblyInfo.cs
@@ -30,3 +29,4 @@ C:\Users\nkadmin\source\repos\SIMFireRiskPredictor\SIMFireRiskPredictor\obj\Debu
 C:\Users\nkadmin\source\repos\SIMFireRiskPredictor\SIMFireRiskPredictor\obj\Debug\netcoreapp2.1\SIMFireRiskPredictor.dll
 C:\Users\nkadmin\source\repos\SIMFireRiskPredictor\SIMFireRiskPredictor\obj\Debug\netcoreapp2.1\SIMFireRiskPredictor.pdb
 C:\Users\nkadmin\source\repos\SIMFireRiskPredictor\SIMFireRiskPredictor\obj\Debug\netcoreapp2.1\SIMFireRiskPredictor.csproj.CopyComplete
+C:\Users\nkadmin\source\repos\SIMFireRiskPredictor\SIMFireRiskPredictor\obj\Debug\netcoreapp2.1\SIMFireRiskPredictor.csprojAssemblyReference.cache
