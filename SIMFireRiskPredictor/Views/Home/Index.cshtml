@@ -2,13 +2,119 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-8">
-            <div id="map" style="height: 500px; width:300px"></div>
-        </div>
-        <div class="col-md-14">
+<div class="text-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9 slide-in-left ">
+                <div class="map" style="height: 750px; background-color:white">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-338">
+                                <div id="map" style="height: 750px; width:803px"></div>
+                            </div>
+                            <div class="col-md-14">
 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="predict-result  bg-info">
+                    <div class="d-flex bd-highlight">
+                        <div class="p-2 flex-grow-1 bd-highlight">
+                            <img src="~/assets/fire.svg" style="width:35px" />
+                            <button type="button" class="btn btn-outline-primary" style="color: white; font-weight:bold">
+                                Fire Risk Category
+                                <span class="badge badge-light" style="color: black; font-weight:bold; font-size: 14px; background-color:white">
+                                    Low
+                                </span>
+                            </button>
+                        </div>
+                        <div class="p-2 bd-highlight">
+                            <img src="~/assets/technology.svg" style="width:37px" />
+                            <button type="button" class="btn btn-outline-primary" style="color: white; font-weight:bold">
+                                Prediction Value
+                                <span class="badge badge-light" style="color: black; font-weight:bold; font-size: 14px; background-color:white">
+                                    1.1
+                                </span>
+                            </button>
+                        </div>
+                        <div class="p-1 mt-3 mr-3 mt-4 bd-highlight" style="font-size: 12px"> Confidence interval [0.9, 1.2]</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 bounce-in-top bg-primary pt-3">
+                <div class="latlong-div">
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="latitudeId" placeholder="Latitude">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="longitudeId" placeholder="Longitude">
+                    </div>
+                </div>
+                <div class="dbuid-div">
+
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="DBuid" aria-label="DBuid" aria-describedby="button-addon2">
+                        <div class="input-group-append">
+                            <button class="btn btn-primary" type="button" id="button-addon2">
+                                @*<span class="spinner-border spinner-border-sm" ></span>*@
+                                <span>Loading...</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="fields-list" style="overflow:scroll; height:550px">
+                        <form>
+                            <div class="form-group"><label for="bld_avg_Above_ground_floors" class="float-left">Bld Avg Above Ground Floors</label><input type="text" class="form-control" id="bld_avg_Above_ground_floors"></div>
+                            <div class="form-group"><label for="bld_avg_building_Area" class="float-left">Bld Avg Building Area</label><input type="text" class="form-control" id="bld_avg_building_Area"></div>
+                            <div class="form-group"><label for="bld_avg_lot_Area" class="float-left">Bld Avg Lot Area</label><input type="text" class="form-control" id="bld_avg_lot_Area"></div>
+                            <div class="form-group"><label for="bld_avg_property_count" class="float-left">Bld Avg Property Count</label><input type="text" class="form-control" id="bld_avg_property_count"></div>
+                            <div class="form-group"><label for="bld_median_building_type" class="float-left">Bld Median Building Type</label><input type="text" class="form-control" id="bld_median_building_type"></div>
+                            <div class="form-group"><label for="bld_median_catagorie_building" class="float-left">Bld Median Categorie Building</label><input type="text" class="form-control" id="bld_median_catagorie_building"></div>
+                            <div class="form-group"><label for="bp_Average_Age" class="float-left">Borough  Average Age</label><input type="text" class="form-control" id="bp_Average_Age"></div>
+                            <div class="form-group"><label for="bp_Average_Income" class="float-left">Borough  Average Income</label><input type="text" class="form-control" id="bp_Average_Income"></div>
+                            <div class="form-group"><label for="bp_Buildings_with_5_or_more_floors" class="float-left">Borough  Buildings With 5 Or More Floors</label><input type="text" class="form-control" id="bp_Buildings_with_5_or_more_floors"></div>
+                            <div class="form-group"><label for="bp_Buildings_with_less_than_5_floors" class="float-left">Borough  Buildings With Less Than 5 Floors</label><input type="text" class="form-control" id="bp_Buildings_with_less_than_5_floors"></div>
+                            <div class="form-group"><label for="bp_College" class="float-left">Borough  College</label><input type="text" class="form-control" id="bp_College"></div>
+                            <div class="form-group"><label for="bp_construction_after_2000" class="float-left">Borough  Construction After 2000</label><input type="text" class="form-control" id="bp_construction_after_2000"></div>
+                            <div class="form-group"><label for="bp_construction_between_1981_and_2000" class="float-left">Borough  Construction Between 1981 And 2000</label><input type="text" class="form-control" id="bp_construction_between_1981_and_2000"></div>
+                            <div class="form-group"><label for="bp_Couple_without_children" class="float-left">Borough  Couple Without Children</label><input type="text" class="form-control" id="bp_Couple_without_children"></div>
+                            <div class="form-group"><label for="bp_firestation_count" class="float-left">Borough  Firestation Count</label><input type="text" class="form-control" id="bp_firestation_count"></div>
+                            <div class="form-group"><label for="bp_Immigrant_population" class="float-left">Borough  Immigrant Population</label><input type="text" class="form-control" id="bp_Immigrant_population"></div>
+                            <div class="form-group"><label for="bp_Language_French_Spoken" class="float-left">Borough  Language French Spoken</label><input type="text" class="form-control" id="bp_Language_French_Spoken"></div>
+                            <div class="form-group"><label for="bp_Mobile_homes" class="float-left">Borough  Mobile Homes</label><input type="text" class="form-control" id="bp_Mobile_homes"></div>
+                            <div class="form-group"><label for="bp_Population" class="float-left">Borough  Population</label><input type="text" class="form-control" id="bp_Population"></div>
+                            <div class="form-group"><label for="bp_Population_density" class="float-left">Borough  Population Density</label><input type="text" class="form-control" id="bp_Population_density"></div>
+                            <div class="form-group"><label for="bp_Secondaryhighschool" class="float-left">Borough  Secondaryhighschool</label><input type="text" class="form-control" id="bp_Secondaryhighschool"></div>
+                            <div class="form-group"><label for="bp_Semi_detached_or_row_houses" class="float-left">Borough  Semi Detached Or Row Houses</label><input type="text" class="form-control" id="bp_Semi_detached_or_row_houses"></div>
+                            <div class="form-group"><label for="bp_Unemployment_rate" class="float-left">Borough  Unemployment Rate</label><input type="text" class="form-control" id="bp_Unemployment_rate"></div>
+                            <div class="form-group"><label for="crime_db_count" class="float-left">Crime DB Count</label><input type="text" class="form-control" id="crime_db_count"></div>
+                            <div class="form-group"><label for="da_area" class="float-left">Da Area</label><input type="text" class="form-control" id="da_area"></div>
+                            <div class="form-group"><label for="da_Firestation_count" class="float-left">Da Firestation Count</label><input type="text" class="form-control" id="da_Firestation_count"></div>
+                            <div class="form-group"><label for="da_pop_density" class="float-left">Da Pop Density</label><input type="text" class="form-control" id="da_pop_density"></div>
+                            <div class="form-group"><label for="da_population" class="float-left">Da Population</label><input type="text" class="form-control" id="da_population"></div>
+                            <div class="form-group"><label for="db_area" class="float-left">Db Area</label><input type="text" class="form-control" id="db_area"></div>
+                            <div class="form-group"><label for="db_density" class="float-left">Db Density</label><input type="text" class="form-control" id="db_density"></div>
+                            <div class="form-group"><label for="db_population" class="float-left">Db Population</label><input type="text" class="form-control" id="db_population"></div>
+                            <div class="form-group"><label for="iw_weather_str" class="float-left">Weather</label><input type="text" class="form-control" id="iw_weather_str"></div>
+                            <div class="form-group"><label for="Month" class="float-left">Month</label><input type="text" class="form-control" id="Month"></div>
+                            <div class="form-group"><label for="nbr_comment_311" class="float-left">Nbr Comment 311</label><input type="text" class="form-control" id="nbr_comment_311"></div>
+                            <div class="form-group"><label for="nbr_complain_311" class="float-left">Nbr Complain 311</label><input type="text" class="form-control" id="nbr_complain_311"></div>
+                            <div class="form-group"><label for="nbr_request_311" class="float-left">Nbr Request 311</label><input type="text" class="form-control" id="nbr_request_311"></div>
+                            <div class="form-group"><label for="Part_of_Day" class="float-left">Part Of Day</label><input type="text" class="form-control" id="Part_of_Day"></div>
+                            <div class="form-group"><label for="season" class="float-left">Season</label><input type="text" class="form-control" id="season"></div>
+                            <div class="form-group"><label for="Weekday" class="float-left">Weekday</label><input type="text" class="form-control" id="Weekday"></div>
+
+
+
+                        </form>
+                    </div>
+                    <div class="predict-div">
+                        <button type="submit" class="btn btn-success btn-lg btn-block mt-3">Get Fire Risk</button>
+                    </div>
+
+                </div>
+
+            </div>
         </div>
     </div>
 </div>
@@ -34,11 +140,14 @@
         map.addListener('click', function (mapsMouseEvent) {
             // Close the current InfoWindow.
             infoWindow.close();
-
+            debugger
             // Create a new InfoWindow.
             infoWindow = new google.maps.InfoWindow({ position: mapsMouseEvent.latLng });
             infoWindow.setContent(mapsMouseEvent.latLng.toString());
             infoWindow.open(map);
+
+            var lat = infoWindow.lat;
+            var long = infoWindow.long;
         });
     }
 
