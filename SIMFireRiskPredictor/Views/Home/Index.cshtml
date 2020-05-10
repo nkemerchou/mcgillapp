@@ -42,7 +42,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-3 bounce-in-top bg-primary pt-3">
+            <div class="col-md-3 bounce-in-top bg-primary side-bar pt-3">
                 <div class="latlong-div">
                     <div class="card">
                         <div class="card-body">
@@ -66,39 +66,56 @@
                             </button>
                         </div>
                     </div>
-                    <div class="fields-list" style="overflow:scroll; height:550px">
+                    <div class="fields-list d-none">
                         <form>
                             <div class="form-group"><label for="bld_avg_Above_ground_floors" class="float-left">Bld Avg Above Ground Floors</label><input type="text" class="form-control" id="bld_avg_Above_ground_floors"></div>
                             <div class="form-group"><label for="bld_avg_building_Area" class="float-left">Bld Avg Building Area</label><input type="text" class="form-control" id="bld_avg_building_Area"></div>
+                            <div class="form-group"><label for="bld_avg_construction_year" class="float-left">Bld Avg Construction Year</label><input type="text" class="form-control" id="bld_avg_construction_year"></div>
                             <div class="form-group"><label for="bld_avg_lot_Area" class="float-left">Bld Avg Lot Area</label><input type="text" class="form-control" id="bld_avg_lot_Area"></div>
                             <div class="form-group"><label for="bld_avg_property_count" class="float-left">Bld Avg Property Count</label><input type="text" class="form-control" id="bld_avg_property_count"></div>
                             <div class="form-group"><label for="bld_median_building_type" class="float-left">Bld Median Building Type</label><input type="text" class="form-control" id="bld_median_building_type"></div>
-                            <div class="form-group"><label for="bld_median_catagorie_building" class="float-left">Bld Median Categorie Building</label><input type="text" class="form-control" id="bld_median_catagorie_building"></div>
-                            <div class="form-group"><label for="bp_Average_Age" class="float-left">Borough  Average Age</label><input type="text" class="form-control" id="bp_Average_Age"></div>
-                            <div class="form-group"><label for="bp_Average_Income" class="float-left">Borough  Average Income</label><input type="text" class="form-control" id="bp_Average_Income"></div>
-                            <div class="form-group"><label for="bp_Buildings_with_5_or_more_floors" class="float-left">Borough  Buildings With 5 Or More Floors</label><input type="text" class="form-control" id="bp_Buildings_with_5_or_more_floors"></div>
-                            <div class="form-group"><label for="bp_Buildings_with_less_than_5_floors" class="float-left">Borough  Buildings With Less Than 5 Floors</label><input type="text" class="form-control" id="bp_Buildings_with_less_than_5_floors"></div>
-                            <div class="form-group"><label for="bp_College" class="float-left">Borough  College</label><input type="text" class="form-control" id="bp_College"></div>
-                            <div class="form-group"><label for="bp_construction_after_2000" class="float-left">Borough  Construction After 2000</label><input type="text" class="form-control" id="bp_construction_after_2000"></div>
-                            <div class="form-group"><label for="bp_construction_between_1981_and_2000" class="float-left">Borough  Construction Between 1981 And 2000</label><input type="text" class="form-control" id="bp_construction_between_1981_and_2000"></div>
-                            <div class="form-group"><label for="bp_Couple_without_children" class="float-left">Borough  Couple Without Children</label><input type="text" class="form-control" id="bp_Couple_without_children"></div>
-                            <div class="form-group"><label for="bp_firestation_count" class="float-left">Borough  Firestation Count</label><input type="text" class="form-control" id="bp_firestation_count"></div>
-                            <div class="form-group"><label for="bp_Immigrant_population" class="float-left">Borough  Immigrant Population</label><input type="text" class="form-control" id="bp_Immigrant_population"></div>
-                            <div class="form-group"><label for="bp_Language_French_Spoken" class="float-left">Borough  Language French Spoken</label><input type="text" class="form-control" id="bp_Language_French_Spoken"></div>
-                            <div class="form-group"><label for="bp_Mobile_homes" class="float-left">Borough  Mobile Homes</label><input type="text" class="form-control" id="bp_Mobile_homes"></div>
-                            <div class="form-group"><label for="bp_Population" class="float-left">Borough  Population</label><input type="text" class="form-control" id="bp_Population"></div>
-                            <div class="form-group"><label for="bp_Population_density" class="float-left">Borough  Population Density</label><input type="text" class="form-control" id="bp_Population_density"></div>
-                            <div class="form-group"><label for="bp_Secondaryhighschool" class="float-left">Borough  Secondaryhighschool</label><input type="text" class="form-control" id="bp_Secondaryhighschool"></div>
-                            <div class="form-group"><label for="bp_Semi_detached_or_row_houses" class="float-left">Borough  Semi Detached Or Row Houses</label><input type="text" class="form-control" id="bp_Semi_detached_or_row_houses"></div>
-                            <div class="form-group"><label for="bp_Unemployment_rate" class="float-left">Borough  Unemployment Rate</label><input type="text" class="form-control" id="bp_Unemployment_rate"></div>
-                            <div class="form-group"><label for="crime_db_count" class="float-left">Crime DB Count</label><input type="text" class="form-control" id="crime_db_count"></div>
+                            <div class="form-group"><label for="bld_median_catagorie_building" class="float-left">Bld Median Catagorie Building</label><input type="text" class="form-control" id="bld_median_catagorie_building"></div>
+                            <div class="form-group"><label for="bp_Apprentice_or_trade_school_diploma" class="float-left">Bp Apprentice Diploma</label><input type="text" class="form-control" id="bp_Apprentice_or_trade_school_diploma"></div>
+                            <div class="form-group"><label for="bp_Average_Age" class="float-left">Bp Average Age</label><input type="text" class="form-control" id="bp_Average_Age"></div>
+                            <div class="form-group"><label for="bp_Average_Household_sizepersons" class="float-left">Bp Average Household Sizepersons</label><input type="text" class="form-control" id="bp_Average_Household_sizepersons"></div>
+                            <div class="form-group"><label for="bp_Average_Income" class="float-left">Bp Average Income</label><input type="text" class="form-control" id="bp_Average_Income"></div>
+                            <div class="form-group"><label for="bp_Buildings_with_5_or_more_floors" class="float-left">Bp Buildings 5 Or More Floors</label><input type="text" class="form-control" id="bp_Buildings_with_5_or_more_floors"></div>
+                            <div class="form-group"><label for="bp_Buildings_with_less_than_5_floors" class="float-left">Bp Buildings Less Than 5 Floors</label><input type="text" class="form-control" id="bp_Buildings_with_less_than_5_floors"></div>
+                            <div class="form-group"><label for="bp_College" class="float-left">Bp College</label><input type="text" class="form-control" id="bp_College"></div>
+                            <div class="form-group"><label for="bp_construction_after_2000" class="float-left">Bp Construction After 2000</label><input type="text" class="form-control" id="bp_construction_after_2000"></div>
+                            <div class="form-group"><label for="bp_construction_between_1981_and_2000" class="float-left">Bp Construction 1981 And 2000</label><input type="text" class="form-control" id="bp_construction_between_1981_and_2000"></div>
+                            <div class="form-group"><label for="bp_Contruction_before1980" class="float-left">Bp Contruction Before1980</label><input type="text" class="form-control" id="bp_Contruction_before1980"></div>
+                            <div class="form-group"><label for="bp_Couple_with_Children" class="float-left">Bp Couple With Children</label><input type="text" class="form-control" id="bp_Couple_with_Children"></div>
+                            <div class="form-group"><label for="bp_Couple_without_children" class="float-left">Bp Couple Without Children</label><input type="text" class="form-control" id="bp_Couple_without_children"></div>
+                            <div class="form-group"><label for="bp_firestation_count" class="float-left">Bp Firestation Count</label><input type="text" class="form-control" id="bp_firestation_count"></div>
+                            <div class="form-group"><label for="bp_Immigrant_population" class="float-left">Bp Immigrant Population</label><input type="text" class="form-control" id="bp_Immigrant_population"></div>
+                            <div class="form-group"><label for="bp_Language_English_Spoken" class="float-left">Bp Language English Spoken</label><input type="text" class="form-control" id="bp_Language_English_Spoken"></div>
+                            <div class="form-group"><label for="bp_Language_French_Spoken" class="float-left">Bp Language French Spoken</label><input type="text" class="form-control" id="bp_Language_French_Spoken"></div>
+                            <div class="form-group"><label for="bp_Less_Than_50000" class="float-left">Bp Less Than 50000</label><input type="text" class="form-control" id="bp_Less_Than_50000"></div>
+                            <div class="form-group"><label for="bp_Mobile_homes" class="float-left">Bp Mobile Homes</label><input type="text" class="form-control" id="bp_Mobile_homes"></div>
+                            <div class="form-group"><label for="bp_No_Diploma" class="float-left">Bp No Diploma</label><input type="text" class="form-control" id="bp_No_Diploma"></div>
+                            <div class="form-group"><label for="bp_Non_immigrant_population" class="float-left">Bp Non Immigrant Population</label><input type="text" class="form-control" id="bp_Non_immigrant_population"></div>
+                            <div class="form-group"><label for="bp_Other_Language_Spoken" class="float-left">Bp Other Language Spoken</label><input type="text" class="form-control" id="bp_Other_Language_Spoken"></div>
+                            <div class="form-group"><label for="bp_Owners" class="float-left">Bp Owners</label><input type="text" class="form-control" id="bp_Owners"></div>
+                            <div class="form-group"><label for="bp_Population" class="float-left">Bp Population</label><input type="text" class="form-control" id="bp_Population"></div>
+                            <div class="form-group"><label for="bp_Population_density" class="float-left">Bp Population Density</label><input type="text" class="form-control" id="bp_Population_density"></div>
+                            <div class="form-group"><label for="bp_Renters" class="float-left">Bp Renters</label><input type="text" class="form-control" id="bp_Renters"></div>
+                            <div class="form-group"><label for="bp_Secondaryhighschool" class="float-left">Bp Secondaryhighschool</label><input type="text" class="form-control" id="bp_Secondaryhighschool"></div>
+                            <div class="form-group"><label for="bp_Semi_detached_or_row_houses" class="float-left">Bp Semi Detached Or Row Houses</label><input type="text" class="form-control" id="bp_Semi_detached_or_row_houses"></div>
+                            <div class="form-group"><label for="bp_Single_Family_Homes" class="float-left">Bp Single Family Homes</label><input type="text" class="form-control" id="bp_Single_Family_Homes"></div>
+                            <div class="form-group"><label for="bp_Single_Parent_Families" class="float-left">Bp Single Parent Families</label><input type="text" class="form-control" id="bp_Single_Parent_Families"></div>
+                            <div class="form-group"><label for="bp_Unemployment_rate" class="float-left">Bp Unemployment Rate</label><input type="text" class="form-control" id="bp_Unemployment_rate"></div>
+                            <div class="form-group"><label for="bp_University" class="float-left">Bp University</label><input type="text" class="form-control" id="bp_University"></div>
+                            <div class="form-group"><label for="crime_db_count" class="float-left">Crime Db Count</label><input type="text" class="form-control" id="crime_db_count"></div>
                             <div class="form-group"><label for="da_area" class="float-left">Da Area</label><input type="text" class="form-control" id="da_area"></div>
                             <div class="form-group"><label for="da_Firestation_count" class="float-left">Da Firestation Count</label><input type="text" class="form-control" id="da_Firestation_count"></div>
                             <div class="form-group"><label for="da_pop_density" class="float-left">Da Pop Density</label><input type="text" class="form-control" id="da_pop_density"></div>
                             <div class="form-group"><label for="da_population" class="float-left">Da Population</label><input type="text" class="form-control" id="da_population"></div>
+                            <div class="form-group"><label for="da_total_private_dwellings" class="float-left">Da Total Private Dwellings</label><input type="text" class="form-control" id="da_total_private_dwellings"></div>
                             <div class="form-group"><label for="db_area" class="float-left">Db Area</label><input type="text" class="form-control" id="db_area"></div>
                             <div class="form-group"><label for="db_density" class="float-left">Db Density</label><input type="text" class="form-control" id="db_density"></div>
                             <div class="form-group"><label for="db_population" class="float-left">Db Population</label><input type="text" class="form-control" id="db_population"></div>
+                            <div class="form-group"><label for="db_tot_Private_dwellings" class="float-left">Db Tot Private Dwellings</label><input type="text" class="form-control" id="db_tot_Private_dwellings"></div>
                             <div class="form-group"><label for="iw_weather_str" class="float-left">Weather</label><input type="text" class="form-control" id="iw_weather_str"></div>
                             <div class="form-group"><label for="Month" class="float-left">Month</label><input type="text" class="form-control" id="Month"></div>
                             <div class="form-group"><label for="nbr_comment_311" class="float-left">Nbr Comment 311</label><input type="text" class="form-control" id="nbr_comment_311"></div>
@@ -109,13 +126,13 @@
                             <div class="form-group"><label for="Weekday" class="float-left">Weekday</label><input type="text" class="form-control" id="Weekday"></div>
 
 
-
                         </form>
-                    </div>
-                    <div class="predict-div">
-                        <button type="submit" class="btn btn-success btn-lg btn-block mt-3">Get Fire Risk</button>
-                    </div>
 
+
+                    </div>
+                    <div class="predict-btn-div d-none">
+                        <button type="submit" class="btn btn-success btn-lg btn-block" onclick="GetPrediction()">Get Fire Risk</button>
+                    </div>
                 </div>
 
             </div>
@@ -170,6 +187,8 @@
                 $("#latId").text(myLat.toString().substring(0, 10));
                 $("#lngId").text(mylng.toString().substring(0, 12));
                 $("#dbuid").val('');
+                $(".fields-list").addClass("d-none"); 
+                $(".predict-btn-div").addClass("d-none"); 
 
                 var newLatlng = new google.maps.LatLng(myLat, mylng);
                 marker = new google.maps.Marker({
@@ -218,17 +237,23 @@
                     if (response == "") {
                         alert("No DBuid found! please try another location!")
                         $("#dbuid").val('');
+                        $(".fields-list").addClass("d-none");
+                        $(".predict-btn-div").addClass("d-none");
                     }
                     else {
                         $("#dbuid").val(response);
+                        $(".fields-list").removeClass("d-none");
+                        $(".predict-btn-div").removeClass("d-none");
+
+                        //GetFeatures
+                        GetFeatures(response);
                     }
 
                 },
-                failure: function (response) {
-                    alert("Error happend! try again");
-                },
                 error: function (response) {
                     alert("Error happend! try again");
+                    $(".fields-list").addClass("d-none");
+                    $(".predict-btn-div").addClass("d-none");
                 }
             }).always(function () {
                 $('.my-spin').addClass("d-none");
@@ -237,6 +262,125 @@
             });
         }
 
+        function GetFeatures(DBuid) {
+            $.ajax({
+                type: "POST",
+                url: "/Home/GetFields?dbuid=" + DBuid,
+                data: '{}',
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (response) {
+                    debugger
+                    if (response == "") {
+                        alert("No features found for DBUID: " + DBuid)
+                        //$("#dbuid").val('');
+                        //$(".fields-list").addClass("d-none");
+                        //$(".predict-btn-div").addClass("d-none");
+                    }
+                    else {
+                        FillFieldsList(response);
+                    }
+
+                },
+                error: function (response) {
+                    alert("Error happend! try again");
+                }
+            }).always(function () {
+
+
+            });
+        }
+
+        function FillFieldsList(features) {
+            if (features.iw_weather_str.length == 2) {
+                features.iw_weather_str = '0' + features.iw_weather_str
+            }
+
+            $('#bld_avg_Above_ground_floors').val(features.bld_avg_Above_ground_floors);
+            $('#bld_avg_building_Area').val(features.bld_avg_building_Area);
+            $('#bld_avg_construction_year').val(features.bld_avg_construction_year);
+            $('#bld_avg_lot_Area').val(features.bld_avg_lot_Area);
+            $('#bld_avg_property_count').val(features.bld_avg_property_count);
+            $('#bld_median_building_type').val(features.bld_median_building_type);
+            $('#bld_median_catagorie_building').val(features.bld_median_catagorie_building);
+            $('#bp_Apprentice_or_trade_school_diploma').val(features.bp_Apprentice_or_trade_school_diploma);
+            $('#bp_Average_Age').val(features.bp_Average_Age);
+            $('#bp_Average_Household_sizepersons').val(features.bp_Average_Household_sizepersons);
+            $('#bp_Average_Income').val(features.bp_Average_Income);
+            $('#bp_Buildings_with_5_or_more_floors').val(features.bp_Buildings_with_5_or_more_floors);
+            $('#bp_Buildings_with_less_than_5_floors').val(features.bp_Buildings_with_less_than_5_floors);
+            $('#bp_College').val(features.bp_College);
+            $('#bp_construction_after_2000').val(features.bp_construction_after_2000);
+            $('#bp_construction_between_1981_and_2000').val(features.bp_construction_between_1981_and_2000);
+            $('#bp_Contruction_before1980').val(features.bp_Contruction_before1980);
+            $('#bp_Couple_with_Children').val(features.bp_Couple_with_Children);
+            $('#bp_Couple_without_children').val(features.bp_Couple_without_children);
+            $('#bp_firestation_count').val(features.bp_firestation_count);
+            $('#bp_Immigrant_population').val(features.bp_Immigrant_population);
+            $('#bp_Language_English_Spoken').val(features.bp_Language_English_Spoken);
+            $('#bp_Language_French_Spoken').val(features.bp_Language_French_Spoken);
+            $('#bp_Less_Than_50000').val(features.bp_Less_Than_50000);
+            $('#bp_Mobile_homes').val(features.bp_Mobile_homes);
+            $('#bp_No_Diploma').val(features.bp_No_Diploma);
+            $('#bp_Non_immigrant_population').val(features.bp_Non_immigrant_population);
+            $('#bp_Other_Language_Spoken').val(features.bp_Other_Language_Spoken);
+            $('#bp_Owners').val(features.bp_Owners);
+            $('#bp_Population').val(features.bp_Population);
+            $('#bp_Population_density').val(features.bp_Population_density);
+            $('#bp_Renters').val(features.bp_Renters);
+            $('#bp_Secondaryhighschool').val(features.bp_Secondaryhighschool);
+            $('#bp_Semi_detached_or_row_houses').val(features.bp_Semi_detached_or_row_houses);
+            $('#bp_Single_Family_Homes').val(features.bp_Single_Family_Homes);
+            $('#bp_Single_Parent_Families').val(features.bp_Single_Parent_Families);
+            $('#bp_Unemployment_rate').val(features.bp_Unemployment_rate);
+            $('#bp_University').val(features.bp_University);
+            $('#crime_db_count').val(features.crime_db_count);
+            $('#da_area').val(features.da_area);
+            $('#da_Firestation_count').val(features.da_Firestation_count);
+            $('#da_pop_density').val(features.da_pop_density);
+            $('#da_population').val(features.da_population);
+            $('#da_total_private_dwellings').val(features.da_total_private_dwellings);
+            $('#db_area').val(features.db_area);
+            $('#db_density').val(features.db_density);
+            $('#db_population').val(features.db_population);
+            $('#db_tot_Private_dwellings').val(features.db_tot_Private_dwellings);
+            $('#iw_weather_str').val(features.iw_weather_str);
+            $('#Month').val(features.month);
+            $('#nbr_comment_311').val(features.nbr_comment_311);
+            $('#nbr_complain_311').val(features.nbr_complain_311);
+            $('#nbr_request_311').val(features.nbr_request_311);
+            $('#Part_of_Day').val(features.part_of_Day);
+            $('#season').val(features.season);
+            $('#Weekday').val(features.weekday);
+        }
+
+        function GetPrediction() {
+            var queryString = 'bld_avg_Above_ground_floors=' + $('#bld_avg_Above_ground_floors').val() + '&' + 'bld_avg_building_Area=' + $('#bld_avg_building_Area').val() + '&' + 'bld_avg_construction_year=' + $('#bld_avg_construction_year').val() + '&' + 'bld_avg_lot_Area=' + $('#bld_avg_lot_Area').val() + '&' + 'bld_avg_property_count=' + $('#bld_avg_property_count').val() + '&' + 'bld_median_building_type=' + $('#bld_median_building_type').val() + '&' + 'bld_median_catagorie_building=' + $('#bld_median_catagorie_building').val() + '&' + 'bp_Apprentice_or_trade_school_diploma=' + $('#bp_Apprentice_or_trade_school_diploma').val() + '&' + 'bp_Average_Age=' + $('#bp_Average_Age').val() + '&' + 'bp_Average_Household_sizepersons=' + $('#bp_Average_Household_sizepersons').val() + '&' + 'bp_Average_Income=' + $('#bp_Average_Income').val() + '&' + 'bp_Buildings_with_5_or_more_floors=' + $('#bp_Buildings_with_5_or_more_floors').val() + '&' + 'bp_Buildings_with_less_than_5_floors=' + $('#bp_Buildings_with_less_than_5_floors').val() + '&' + 'bp_College=' + $('#bp_College').val() + '&' + 'bp_construction_after_2000=' + $('#bp_construction_after_2000').val() + '&' + 'bp_construction_between_1981_and_2000=' + $('#bp_construction_between_1981_and_2000').val() + '&' + 'bp_Contruction_before1980=' + $('#bp_Contruction_before1980').val() + '&' + 'bp_Couple_with_Children=' + $('#bp_Couple_with_Children').val() + '&' + 'bp_Couple_without_children=' + $('#bp_Couple_without_children').val() + '&' + 'bp_firestation_count=' + $('#bp_firestation_count').val() + '&' + 'bp_Immigrant_population=' + $('#bp_Immigrant_population').val() + '&' + 'bp_Language_English_Spoken=' + $('#bp_Language_English_Spoken').val() + '&' + 'bp_Language_French_Spoken=' + $('#bp_Language_French_Spoken').val() + '&' + 'bp_Less_Than_50000=' + $('#bp_Less_Than_50000').val() + '&' + 'bp_Mobile_homes=' + $('#bp_Mobile_homes').val() + '&' + 'bp_No_Diploma=' + $('#bp_No_Diploma').val() + '&' + 'bp_Non_immigrant_population=' + $('#bp_Non_immigrant_population').val() + '&' + 'bp_Other_Language_Spoken=' + $('#bp_Other_Language_Spoken').val() + '&' + 'bp_Owners=' + $('#bp_Owners').val() + '&' + 'bp_Population=' + $('#bp_Population').val() + '&' + 'bp_Population_density=' + $('#bp_Population_density').val() + '&' + 'bp_Renters=' + $('#bp_Renters').val() + '&' + 'bp_Secondaryhighschool=' + $('#bp_Secondaryhighschool').val() + '&' + 'bp_Semi_detached_or_row_houses=' + $('#bp_Semi_detached_or_row_houses').val() + '&' + 'bp_Single_Family_Homes=' + $('#bp_Single_Family_Homes').val() + '&' + 'bp_Single_Parent_Families=' + $('#bp_Single_Parent_Families').val() + '&' + 'bp_Unemployment_rate=' + $('#bp_Unemployment_rate').val() + '&' + 'bp_University=' + $('#bp_University').val() + '&' + 'crime_db_count=' + $('#crime_db_count').val() + '&' + 'da_area=' + $('#da_area').val() + '&' + 'da_Firestation_count=' + $('#da_Firestation_count').val() + '&' + 'da_pop_density=' + $('#da_pop_density').val() + '&' + 'da_population=' + $('#da_population').val() + '&' + 'da_total_private_dwellings=' + $('#da_total_private_dwellings').val() + '&' + 'db_area=' + $('#db_area').val() + '&' + 'db_density=' + $('#db_density').val() + '&' + 'db_population=' + $('#db_population').val() + '&' + 'db_tot_Private_dwellings=' + $('#db_tot_Private_dwellings').val() + '&' + 'iw_weather_str=' + $('#iw_weather_str').val() + '&' + 'Month=' + $('#Month').val() + '&' + 'nbr_comment_311=' + $('#nbr_comment_311').val() + '&' + 'nbr_complain_311=' + $('#nbr_complain_311').val() + '&' + 'nbr_request_311=' + $('#nbr_request_311').val() + '&' + 'Part_of_Day=' + $('#Part_of_Day').val() + '&' + 'season=' + $('#season').val() + '&' + 'Weekday=' + $('#Weekday').val();
+            debugger
+            $.ajax({
+                type: "POST",
+                url: "/Home/GetPrediction?" + queryString,
+                data: '{}',
+                contentType: "application/json; charset=utf-8",
+                dataType: "html",
+                success: function (response) {
+                    debugger
+                    if (response == "") {
+                        alert("No Prediction found for DBUID: " + DBuid)
+                    }
+                    else {
+                        //FillFieldsList(response);
+                        alert('ok')
+                    }
+
+                },
+                error: function (response) {
+                    alert("Error happend! try again");
+                }
+            }).always(function () {
+
+            });
+        }
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC19wDoBBEDfW4lhJbzGU8iR7J-as_r8sw&callback=initMap" async defer></script>
 }

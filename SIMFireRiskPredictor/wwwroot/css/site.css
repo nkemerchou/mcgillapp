@@ -31,13 +31,6 @@ a {
     border-color: #1861ac;
 }
 
-.fields-list .form-group {
-    margin-right: 10px;
-}
-
-.fields-list label {
-    font-size: 13px;
-}
 
 .bounce-in-top {
     -webkit-animation: bounce-in-top 1.1s both;
@@ -345,4 +338,32 @@ body {
     flex: 1 1 auto;
     min-height: 1px;
     padding: 1rem;
+}
+
+label {
+   
+    margin-bottom: 0;
+}
+
+.fields-list .form-control {
+    height: 30px;
+}
+
+.fields-list .form-group {
+    margin-right: 10px;
+}
+
+.fields-list label {
+    font-size: 13px;
+}
+
+.fields-list {
+    overflow: scroll;
+    height: 550px;
+    background-color: #375a7f;
+    padding: 0.5rem;
+}
+
+.side-bar {
+   background-color: #fff4d1 !important
 }
