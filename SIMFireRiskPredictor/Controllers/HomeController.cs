@@ -19,32 +19,6 @@ namespace SIMFireRiskPredictor.Controllers
 
         public IActionResult About()
         {
-            try
-            {
-                string projectId = "thermal-creek-272919";
-                var client = BigQueryClient.Create(projectId);
-                string query = $"SELECT * " +
-                    $" FROM `dw.Montreal_DB_Poly_compact`" +
-                    $" Where ST_CONTAINS(geo, ST_GEOGPOINT(-73.573260, 45.504566)) ";
-
-
-
-
-                //string query = @"SELECT * except (Borough_id, DBuid, DAuid) FROM `thermal-creek-272919.dw.All_By_DB2` LIMIT 10";
-                var result = client.ExecuteQuery(query, parameters: null);
-                Console.Write("\nQuery Results:\n------------\n");
-                foreach (var row in result)
-                {
-                    var dbuid = row["DBUID"];
-                    Console.WriteLine($"{row["DBUID"]}: {row["geo"]}");
-                }
-            }
-            catch (Exception ex)
-            {
-
-            }
-
-
 
             ViewData["Message"] = "Your application description page.";
 
@@ -67,6 +41,34 @@ namespace SIMFireRiskPredictor.Controllers
         {
 
             return View();
+        }
+
+        [HttpPost]
+        public JsonResult GetDBuid(string lat, string lng)
+        {
+            string dbuid = "";
+            try
+            {
+                string projectId = "firebird-276623";
+                var client = BigQueryClient.Create(projectId);
+                string query = $"SELECT * " +
+                    $" FROM `dw.Montreal_DB_Poly_compact`" +
+                    $" Where ST_CONTAINS(geo, ST_GEOGPOINT({lng}, {lat})) ";
+
+                //string query = @"SELECT * except (Borough_id, DBuid, DAuid) FROM `thermal-creek-272919.dw.All_By_DB2` LIMIT 10";
+                var result = client.ExecuteQuery(query, parameters: null);
+             
+                foreach (var row in result)
+                {
+                    dbuid = row["DBUID"].ToString();                    
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+
+            return Json(dbuid);
         }
 
         static void PythonPredict()

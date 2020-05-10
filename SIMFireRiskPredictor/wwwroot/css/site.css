@@ -54,7 +54,31 @@ a {
     animation: shake-horizontal .8s cubic-bezier(.455,.03,.515,.955) both
 }
 
+.blink-1 {
+    -webkit-animation: blink-1 .6s both;
+    animation: blink-1 .6s both
+}
 
+
+@-webkit-keyframes blink-1 {
+    0%,50%,100% {
+        opacity: 1
+    }
+
+    25%,75% {
+        opacity: 0
+    }
+}
+
+@keyframes blink-1 {
+    0%,50%,100% {
+        opacity: 1
+    }
+
+    25%,75% {
+        opacity: 0
+    }
+}
 
 @-webkit-keyframes shake-horizontal {
     0%,100% {

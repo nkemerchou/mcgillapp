@@ -57,7 +57,7 @@
                 <div class="dbuid-div">
 
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="DBuid" aria-label="DBuid" aria-describedby="button-addon2">
+                        <input type="text" class="form-control" placeholder="DBuid" aria-label="DBuid" aria-describedby="dbuidBtn" id="dbuid">
                         <div class="input-group-append">
                             <button class="btn btn-primary" type="button" id="dbuidBtn" onclick="GetDBUID()">
                                 <span class="spinner-border spinner-border-sm my-spin d-none"></span>
@@ -125,93 +125,118 @@
 
 @section scripts {
 
-<script>
-    var map;
-    var marker;
-    var myLat = 45.5035;
-    var mylng = -73.5685;
-    function initMap() {
-        myLat = 45.5035;
-        mylng = -73.5685;        
+    <script>
+        var map;
+        var marker;
+        var myLat = 45.5035;
+        var mylng = -73.5685;
+        function initMap() {
+            myLat = 45.5035;
+            mylng = -73.5685;
 
-        $("#latId").text(myLat)
-        $("#lngId").text(mylng);
+            $("#latId").text(myLat)
+            $("#lngId").text(mylng);
 
-        var myLatlng = { lat: myLat, lng: mylng };
-        map = new google.maps.Map(document.getElementById('mymap'), {
-            center: myLatlng, 
-            zoom: 12
-        });
+            var myLatlng = { lat: myLat, lng: mylng };
+            map = new google.maps.Map(document.getElementById('mymap'), {
+                center: myLatlng,
+                zoom: 12
+            });
 
-        // To add the marker to the map, call setMap();
-        marker = new google.maps.Marker({
-            position: myLatlng,
-            animation: google.maps.Animation.DROP,
-            title: "Clicked here!"
-        });
-        marker.addListener('click', toggleBounce);        
-        marker.setMap(map);
-
-        // Create the initial InfoWindow.
-        //var infoWindow = new google.maps.InfoWindow(
-        //    { content: 'Click the map to get Lat/Lng!', position: myLatlng });
-        //infoWindow.open(map);
-
-        // Configure the click listener.
-        map.addListener('click', function (mapsMouseEvent) {            
-            debugger
-            $('#dbuidBtn').removeClass('shake-horizontal')
-            marker.setMap(null);
-
-            var latlng = mapsMouseEvent.latLng.toString().replace(')', '').replace('(', '').split(',');
-            myLat = latlng[0];
-            mylng = latlng[1];
-
-            $("#latId").text(myLat.toString().substring(0, 10));
-            $("#lngId").text(mylng.toString().substring(0,12));
-
-            var newLatlng = new google.maps.LatLng(myLat, mylng);
+            // To add the marker to the map, call setMap();
             marker = new google.maps.Marker({
-                position: newLatlng,
-                //draggable: true,
+                position: myLatlng,
                 animation: google.maps.Animation.DROP,
                 title: "Clicked here!"
             });
-
+            marker.addListener('click', toggleBounce);
             marker.setMap(map);
-            setTimeout(function () { $('#dbuidBtn').addClass('shake-horizontal') }, 500);
-            
-            // Close the current InfoWindow.
-            //infoWindow.close();
 
-            // Create a new InfoWindow.
-            //infoWindow = new google.maps.InfoWindow({ position: mapsMouseEvent.latLng });
-            //infoWindow.setContent(mapsMouseEvent.latLng.toString());
+            // Create the initial InfoWindow.
+            //var infoWindow = new google.maps.InfoWindow(
+            //    { content: 'Click the map to get Lat/Lng!', position: myLatlng });
             //infoWindow.open(map);
-            ////alert(mapsMouseEvent.latLng.toString())
-            //var lat = infoWindow.lat;
-            //var long = infoWindow.long;
-        });
-    }
 
-    function toggleBounce() {
-        if (marker.getAnimation() !== null) {
-            marker.setAnimation(null);
-        } else {
-            marker.setAnimation(google.maps.Animation.BOUNCE);
+            // Configure the click listener.
+            map.addListener('click', function (mapsMouseEvent) {
+                debugger
+                $('#dbuidBtn').removeClass('blink-1')
+                marker.setMap(null);
+
+                var latlng = mapsMouseEvent.latLng.toString().replace(')', '').replace('(', '').split(',');
+                myLat = latlng[0];
+                mylng = latlng[1];
+
+                $("#latId").text(myLat.toString().substring(0, 10));
+                $("#lngId").text(mylng.toString().substring(0, 12));
+                $("#dbuid").val('');
+
+                var newLatlng = new google.maps.LatLng(myLat, mylng);
+                marker = new google.maps.Marker({
+                    position: newLatlng,
+                    //draggable: true,
+                    animation: google.maps.Animation.DROP,
+                    title: "Clicked here!"
+                });
+
+                marker.setMap(map);
+                setTimeout(function () { $('#dbuidBtn').addClass('blink-1') }, 500);
+
+                // Close the current InfoWindow.
+                //infoWindow.close();
+
+                // Create a new InfoWindow.
+                //infoWindow = new google.maps.InfoWindow({ position: mapsMouseEvent.latLng });
+                //infoWindow.setContent(mapsMouseEvent.latLng.toString());
+                //infoWindow.open(map);
+                ////alert(mapsMouseEvent.latLng.toString())
+                //var lat = infoWindow.lat;
+                //var long = infoWindow.long;
+            });
         }
-    }
 
-    function GetDBUID() {
-        //dbuidBtn
-        //<span class="spinner-border spinner-border-sm my-spin d-none"></span>
-        //    <span class="my-spin d-none">Loading...</span>
-        //    <span class="my-spin-text">Get DBUID</span>
-        $('.my-spin').removeClass("d-none");
-        $('.my-spin-text').addClass("d-none");
+        function toggleBounce() {
+            if (marker.getAnimation() !== null) {
+                marker.setAnimation(null);
+            } else {
+                marker.setAnimation(google.maps.Animation.BOUNCE);
+            }
+        }
 
-    }
+        function GetDBUID() {
+            //dbuidBtn
+            $('.my-spin').removeClass("d-none");
+            $('.my-spin-text').addClass("d-none");
 
-</script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC19wDoBBEDfW4lhJbzGU8iR7J-as_r8sw&callback=initMap" async defer></script>
+            $.ajax({
+                type: "POST",
+                url: "/Home/GetDBuid?lat=" + myLat.toString().substring(0, 10) + "&lng=" + mylng.toString().substring(0, 12),
+                data: '{}',
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (response) {
+                    if (response == "") {
+                        alert("No DBuid found! please try another location!")
+                        $("#dbuid").val('');
+                    }
+                    else {
+                        $("#dbuid").val(response);
+                    }
+
+                },
+                failure: function (response) {
+                    alert("Error happend! try again");
+                },
+                error: function (response) {
+                    alert("Error happend! try again");
+                }
+            }).always(function () {
+                $('.my-spin').addClass("d-none");
+                $('.my-spin-text').removeClass("d-none");
+
+            });
+        }
+
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC19wDoBBEDfW4lhJbzGU8iR7J-as_r8sw&callback=initMap" async defer></script>
 }
