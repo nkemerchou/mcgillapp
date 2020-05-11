@@ -2,6 +2,7 @@
 using Google.Cloud.BigQuery.V2;
 using Google.Protobuf.WellKnownTypes;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using SIMFireRiskPredictor.Models;
 using System;
 using System.Collections.Generic;
@@ -29,7 +30,7 @@ namespace SIMFireRiskPredictor.Controllers
         {
             //https://googleapis.github.io/google-cloud-dotnet/docs/Google.Cloud.AutoML.V1/api/Google.Cloud.AutoML.V1.PredictionServiceClient.html
 
-            PythonPredict();
+            //PythonPredict();
             //prediction();
             //test();
             ViewData["Message"] = "Your contact page.";
@@ -93,6 +94,8 @@ namespace SIMFireRiskPredictor.Controllers
                     $"LIMIT 1 ";
 
                 var result = client.ExecuteQuery(query, parameters: null);
+                if (result.TotalRows == 0)
+                    return null;
 
                 foreach (var row in result)
                 {
@@ -228,64 +231,11 @@ namespace SIMFireRiskPredictor.Controllers
             string season,
             string Weekday)
         {
+            var prediction = new PredictionResult();
             try
             {
-                var payloadArg = String.Format("{'bld_avg_Above_ground_floors':{0},"+
-                                                "'bld_avg_building_Area':{1}," +
-                                                "'bld_avg_construction_year':{2}," +
-                                                "'bld_avg_lot_Area':{3}," +
-                                                "'bld_avg_property_count':{4}," +
-                                                "'bld_median_building_type':{5}," +
-                                                "'bld_median_catagorie_building':{6}," +
-                                                "'bp_Apprentice_or_trade_school_diploma':{7}," +
-                                                "'bp_Average_Age':{8}," +
-                                                "'bp_Average_Household_sizepersons':{9}," +
-                                                "'bp_Average_Income':{10}," +
-                                                "'bp_Buildings_with_5_or_more_floors':{11}," +
-                                                "'bp_Buildings_with_less_than_5_floors':{12}," +
-                                                "'bp_College':{13}," +
-                                                "'bp_construction_after_2000':{14}," +
-                                                "'bp_construction_between_1981_and_2000':{15}," +
-                                                "'bp_Contruction_before1980':{16}," +
-                                                "'bp_Couple_with_Children':{17}," +
-                                                "'bp_Couple_without_children':{18}," +
-                                                "'bp_firestation_count':{19}," +
-                                                "'bp_Immigrant_population':{20}," +
-                                                "'bp_Language_English_Spoken':{21}," +
-                                                "'bp_Language_French_Spoken':{22}," +
-                                                "'bp_Less_Than_50000':{23}," +
-                                                "'bp_Mobile_homes':{24}," +
-                                                "'bp_No_Diploma':{25}," +
-                                                "'bp_Non_immigrant_population':{26}," +
-                                                "'bp_Other_Language_Spoken':{27}," +
-                                                "'bp_Owners':{28}," +
-                                                "'bp_Population':{29}," +
-                                                "'bp_Population_density':{30}," +
-                                                "'bp_Renters':{31}," +
-                                                "'bp_Secondaryhighschool':{32}," +
-                                                "'bp_Semi_detached_or_row_houses':{33}," +
-                                                "'bp_Single_Family_Homes':{34}," +
-                                                "'bp_Single_Parent_Families':{35}," +
-                                                "'bp_Unemployment_rate':{36}," +
-                                                "'bp_University':{37}," +
-                                                "'crime_db_count':{38}," +
-                                                "'da_area':{39}," +
-                                                "'da_Firestation_count':{40}," +
-                                                "'da_pop_density':{41}," +
-                                                "'da_population':{42}," +
-                                                "'da_total_private_dwellings':{43}," +
-                                                "'db_area':{44}," +
-                                                "'db_density':{45}," +
-                                                "'db_population':{46}," +
-                                                "'db_tot_Private_dwellings':{47}," +
-                                                "'iw_weather_str':{48}," +
-                                                "'Month':{49}," +
-                                                "'nbr_comment_311':{50}," +
-                                                "'nbr_complain_311':{51}," +
-                                                "'nbr_request_311':{52}," +
-                                                "'Part_of_Day':{53}," +
-                                                "'season':{54}," +
-                                                "'Weekday':{55}}", bld_avg_Above_ground_floors,
+                var payloadArg = String.Format("{{'bld_avg_Above_ground_floors':{0},'bld_avg_building_Area':{1},'bld_avg_construction_year':{2},'bld_avg_lot_Area':{3},'bld_avg_property_count':{4},'bld_median_building_type':'{5}','bld_median_catagorie_building':'{6}','bp_Apprentice_or_trade_school_diploma':{7},'bp_Average_Age':{8},'bp_Average_Household_sizepersons':{9},'bp_Average_Income':{10},'bp_Buildings_with_5_or_more_floors':{11},'bp_Buildings_with_less_than_5_floors':{12},'bp_College':{13},'bp_construction_after_2000':{14},'bp_construction_between_1981_and_2000':{15},'bp_Contruction_before1980':{16},'bp_Couple_with_Children':{17},'bp_Couple_without_children':{18},'bp_firestation_count':{19},'bp_Immigrant_population':{20},'bp_Language_English_Spoken':{21},'bp_Language_French_Spoken':{22},'bp_Less_Than_50000':{23},'bp_Mobile_homes':{24},'bp_No_Diploma':{25},'bp_Non_immigrant_population':{26},'bp_Other_Language_Spoken':{27},'bp_Owners':{28},'bp_Population':{29},'bp_Population_density':{30},'bp_Renters':{31},'bp_Secondaryhighschool':{32},'bp_Semi_detached_or_row_houses':{33},'bp_Single_Family_Homes':{34},'bp_Single_Parent_Families':{35},'bp_Unemployment_rate':{36},'bp_University':{37},'crime_db_count':{38},'da_area':{39},'da_Firestation_count':{40},'da_pop_density':{41},'da_population':{42},'da_total_private_dwellings':{43},'db_area':{44},'db_density':{45},'db_population':{46},'db_tot_Private_dwellings':{47},'iw_weather_str':'{48}','Month':'{49}','nbr_comment_311':{50},'nbr_complain_311':{51},'nbr_request_311':{52},'Part_of_Day':'{53}','season':'{54}','Weekday':'{55}'}}",
+                                                    bld_avg_Above_ground_floors,
                                                                     bld_avg_building_Area,
                                                                     bld_avg_construction_year,
                                                                     bld_avg_lot_Area,
@@ -342,6 +292,14 @@ namespace SIMFireRiskPredictor.Controllers
                                                                     season,
                                                                     Weekday);
 
+                prediction = PythonPredict(payloadArg);
+                //Compare the prediction p0 to : [0,1] Low / [2,5] medium / [6,8] High / [>9] Very High
+                if (prediction.Prediction*1000 < 1500)
+                    prediction.Category = "LOW";
+                else if (prediction.Prediction * 1000 < 1900)
+                    prediction.Category = "MEDIUM";
+                else 
+                    prediction.Category = "HIGH";
 
             }
             catch (Exception ex)
@@ -349,11 +307,12 @@ namespace SIMFireRiskPredictor.Controllers
                 return null;
             }
 
-            return Json("");
+            return Json(prediction);
         }
 
-        static void PythonPredict()
+        static PredictionResult PythonPredict(string payloadArg)
         {
+            string payload = payloadArg.Replace("\'", "\"\"");
             // 1) Create Process Info
             var psi = new ProcessStartInfo();
             psi.FileName = @"C:\Program Files\Python38\python.exe";
@@ -361,11 +320,11 @@ namespace SIMFireRiskPredictor.Controllers
             // 2) Provide script and arguments
             //var script = @"C:\Users\nkadmin\source\repos\SIMFireRiskPredictor\SIMFireRiskPredictor\predict.py";
             var script = @"predict.py";
-            var payloadArg = @"{""""bld_avg_Above_ground_floors"""":1.92857142857142,	""""bld_avg_building_Area"""":167.571428571428,	""""bld_avg_lot_Area"""":354.9375,	""""bld_avg_property_count"""":1.64285714285714,	""""bld_median_building_type"""":1000,	""""bld_median_catagorie_building"""":0,	""""bp_Average_Age"""":44,	""""bp_Average_Income"""":67517,	""""bp_Buildings_with_5_or_more_floors"""":4,	""""bp_Buildings_with_less_than_5_floors"""":34,	""""bp_College"""":19,	""""bp_construction_after_2000"""":6,	""""bp_construction_between_1981_and_2000"""":16,	""""bp_Couple_without_children"""":36,	""""bp_firestation_count"""":1,	""""bp_Immigrant_population"""":16,	""""bp_Language_French_Spoken"""":33,	""""bp_Mobile_homes"""":0,	""""bp_Population"""":4958,	""""bp_Population_density"""":473,	""""bp_Secondaryhighschool"""":24,	""""bp_Semi_detached_or_row_houses"""":18,	""""bp_Unemployment_rate"""":8,	""""crime_db_count"""":1,	""""da_area"""":0.1341,	""""da_Firestation_count"""":0,	""""da_pop_density"""":3795.67486950037,	""""da_population"""":509,	""""db_area"""":0.0228,	""""db_density"""":1315.78947368421,	""""db_population"""":30,	""""iw_weather_str"""":""""6"""",	""""Month"""":""""4"""",	""""nbr_comment_311"""":0,	""""nbr_complain_311"""":0,	""""nbr_request_311"""":0,	""""Part_of_Day"""":""""2"""",	""""season"""":""""1"""",	""""Weekday"""":""""0""""}";
+            //var payloadArg = @"{""""bld_avg_Above_ground_floors"""":1.92857142857142,	""""bld_avg_building_Area"""":167.571428571428,	""""bld_avg_lot_Area"""":354.9375,	""""bld_avg_property_count"""":1.64285714285714,	""""bld_median_building_type"""":1000,	""""bld_median_catagorie_building"""":0,	""""bp_Average_Age"""":44,	""""bp_Average_Income"""":67517,	""""bp_Buildings_with_5_or_more_floors"""":4,	""""bp_Buildings_with_less_than_5_floors"""":34,	""""bp_College"""":19,	""""bp_construction_after_2000"""":6,	""""bp_construction_between_1981_and_2000"""":16,	""""bp_Couple_without_children"""":36,	""""bp_firestation_count"""":1,	""""bp_Immigrant_population"""":16,	""""bp_Language_French_Spoken"""":33,	""""bp_Mobile_homes"""":0,	""""bp_Population"""":4958,	""""bp_Population_density"""":473,	""""bp_Secondaryhighschool"""":24,	""""bp_Semi_detached_or_row_houses"""":18,	""""bp_Unemployment_rate"""":8,	""""crime_db_count"""":1,	""""da_area"""":0.1341,	""""da_Firestation_count"""":0,	""""da_pop_density"""":3795.67486950037,	""""da_population"""":509,	""""db_area"""":0.0228,	""""db_density"""":1315.78947368421,	""""db_population"""":30,	""""iw_weather_str"""":""""6"""",	""""Month"""":""""4"""",	""""nbr_comment_311"""":0,	""""nbr_complain_311"""":0,	""""nbr_request_311"""":0,	""""Part_of_Day"""":""""2"""",	""""season"""":""""1"""",	""""Weekday"""":""""0""""}";
             //"//,	\"bld_avg_building_Area\":167.571428571428,	\"bld_avg_lot_Area\":354.9375,	\"bld_avg_property_count\":1.64285714285714,	\"bld_median_building_type\":1000,	\"bld_median_catagorie_building\":0,	\"bp_Average_Age\":44,	\"bp_Average_Income\":67517,	\"bp_Buildings_with_5_or_more_floors\":4,	\"bp_Buildings_with_less_than_5_floors\":34,	\"bp_College\":19,	\"bp_construction_after_2000\":6,	\"bp_construction_between_1981_and_2000\":16,	\"bp_Couple_without_children\":36,	\"bp_firestation_count\":1,	\"bp_Immigrant_population\":16,	\"bp_Language_French_Spoken\":33,	\"bp_Mobile_homes\":0,	\"bp_Population\":4958,	\"bp_Population_density\":473,	\"bp_Secondaryhighschool\":24,	\"bp_Semi_detached_or_row_houses\":18,	\"bp_Unemployment_rate\":8,	\"crime_db_count\":1,	\"da_area\":0.1341,	\"da_Firestation_count\":0,	\"da_pop_density\":3795.67486950037,	\"da_population\":509,	\"db_area\":0.0228,	\"db_density\":1315.78947368421,	\"db_population\":30,	\"iw_weather_str\":\"6\",	\"Month\":\"4\",	\"nbr_comment_311\":0,	\"nbr_complain_311\":0,	\"nbr_request_311\":0,	\"Part_of_Day\":\"2\",	\"season\":\"1\",	\"Weekday\":\"0\"}";
 
             //psi.Arguments = $"\"{script}\"";
-            psi.Arguments = $"\"{script}\" \"{payloadArg}\"";
+            psi.Arguments = $"\"{script}\" \"{payload}\"";
 
             // 3) Process configuration
             psi.UseShellExecute = false;
@@ -383,12 +342,37 @@ namespace SIMFireRiskPredictor.Controllers
                 results = process.StandardOutput.ReadToEnd();
             }
 
+            if (results != "")
+            {
+                var prediction = new PredictionResult();
+                var lines = results.Split("\r\n");
+                foreach (var line in lines)
+                {
+                    if (line.ToString().Contains("number_value"))
+                    {
+                        prediction.Prediction = Convert.ToDouble(line.ToString().Split(":")[1]);
+                    }
+                    else if (line.ToString().Contains("start"))
+                    {
+                        prediction.CI_S = Convert.ToDouble(line.ToString().Split(":")[1]);
+                    }
+                    else if (line.ToString().Contains("end"))
+                    {
+                        prediction.CI_E = Convert.ToDouble(line.ToString().Split(":")[1]);
+                    }
+
+                }
+
+                return prediction;
+            }
+            else return null;
+
             // 5) Display output
-            Console.WriteLine("ERRORS:");
-            Console.WriteLine(errors);
-            Console.WriteLine();
-            Console.WriteLine("Results:");
-            Console.WriteLine(results);
+            //Console.WriteLine("ERRORS:");
+            //Console.WriteLine(errors);
+            //Console.WriteLine();
+            //Console.WriteLine("Results:");
+            //Console.WriteLine(results);
 
         }
 

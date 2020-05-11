@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.1",
-    "signature": "60c9900e425ed0c984db9ec0683d71a6b7bb946a"
+    "signature": "92ea12b0d8c495e30c89ed9ac834768ca232e0c5"
   },
   "compilationOptions": {
     "defines": [
@@ -26,6 +26,7 @@
         "dependencies": {
           "Google.Cloud.AutoML.V1": "2.0.0",
           "Google.Cloud.BigQuery.V2": "1.4.1",
+          "Json.Net": "1.0.22",
           "Microsoft.AspNetCore.App": "2.1.1",
           "Microsoft.AspNetCore.Razor.Design": "2.1.2",
           "Microsoft.NETCore.App": "2.1.0"
@@ -311,6 +312,17 @@
         },
         "compile": {
           "lib/netstandard2.0/Grpc.Core.Api.dll": {}
+        }
+      },
+      "Json.Net/1.0.22": {
+        "runtime": {
+          "lib/netstandard2.0/Json.Net.dll": {
+            "assemblyVersion": "1.0.22.1",
+            "fileVersion": "1.0.22.1"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/Json.Net.dll": {}
         }
       },
       "Microsoft.AspNetCore.Razor.Design/2.1.2": {},
@@ -3558,6 +3570,13 @@
       "sha512": "sha512-UAHXfV+n6TEMCybML7V+1qWP7G9byGXUE2mtATWpctP7xB8P5J++iYMuyxrprKkC36X/QuUwHJmHpBxlDHzF2g==",
       "path": "grpc.core.api/2.27.0",
       "hashPath": "grpc.core.api.2.27.0.nupkg.sha512"
+    },
+    "Json.Net/1.0.22": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-y5xI87/heGiNZ859fsTORkoiB93qEW/rwLtxvJBAeQIoCCPoOLXzZiMx/HHg4WnR9UhcMH6Ec6m76jN+qqZVSg==",
+      "path": "json.net/1.0.22",
+      "hashPath": "json.net.1.0.22.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Razor.Design/2.1.2": {
       "type": "package",

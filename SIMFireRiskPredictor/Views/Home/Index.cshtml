@@ -24,8 +24,8 @@
                             <img src="~/assets/fire.svg" style="width:35px" />
                             <button type="button" class="btn btn-outline-primary" style="color: white; font-weight:bold">
                                 Fire Risk Category
-                                <span class="badge badge-light" style="color: black; font-weight:bold; font-size: 14px; background-color:white">
-                                    Low
+                                <span id="category-span" class="badge badge-light" style="color: black; font-weight:bold; font-size: 14px; background-color:white">
+                                    
                                 </span>
                             </button>
                         </div>
@@ -33,12 +33,12 @@
                             <img src="~/assets/technology.svg" style="width:37px" />
                             <button type="button" class="btn btn-outline-primary" style="color: white; font-weight:bold">
                                 Prediction Value
-                                <span class="badge badge-light" style="color: black; font-weight:bold; font-size: 14px; background-color:white">
-                                    1.1
+                                <span id="prediction-span" class="badge badge-light" style="color: black; font-weight:bold; font-size: 14px; background-color:white">
+                                    
                                 </span>
                             </button>
                         </div>
-                        <div class="p-1 mt-3 mr-3 mt-4 bd-highlight" style="font-size: 12px"> Confidence interval [0.9, 1.2]</div>
+                        <div class="p-1 mt-3 mr-3 mt-4 bd-highlight" style="font-size: 12px"> Confidence interval <span id="ci-span"></span></div>
                     </div>
                 </div>
             </div>
@@ -370,7 +370,13 @@
                     }
                     else {
                         //FillFieldsList(response);
-                        alert('ok')
+                        debugger;
+                        var obj = JSON.parse(response);
+
+                        $("#ci-span").text("[" + obj.cI_S.toFixed(2) + "," + obj.cI_E.toFixed(2) + "]");
+                        $("#prediction-span").text(obj.prediction.toFixed(2));
+                        $("#category-span").text(obj.category);
+                        alert('OK')
                     }
 
                 },
